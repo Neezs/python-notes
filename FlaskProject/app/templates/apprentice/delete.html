@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Delete Apprentice</h2>
+
+{% if trainer_error %}
+    <p class="warning"><strong>This apprentice is linked to a trainer. Please remove the trainer before deletion.</strong></p>
+{% endif %}
+
+<p>Are you sure you want to delete <strong>{{ apprenti.prenom }} {{ apprenti.nom }}</strong>?</p>
+
+<form method="post">
+    <button type="submit" {% if trainer_error %}disabled{% endif %}>Yes, delete</button>
+    <a href="{{ url_for('apprentice.list_apprentices') }}">Cancel</a>
+</form>
+{% endblock %}

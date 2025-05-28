@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Edit Trainer</h2>
+
+<form method="post">
+    <h3>Personal Information</h3>
+    <label>First name:</label><input name="prenom" value="{{ trainer.prenom }}" required><br>
+    <label>Last name:</label><input name="nom" value="{{ trainer.nom }}" required><br>
+    <label>Email:</label><input name="mail" value="{{ trainer.mail }}" required><br>
+    <label>Gender:</label>
+    <select name="sexe" required>
+        <option value="M" {% if trainer.sexe == 'M' %}selected{% endif %}>Male</option>
+        <option value="F" {% if trainer.sexe == 'F' %}selected{% endif %}>Female</option>
+    </select><br>
+
+    <h3>Address</h3>
+    <label>City:</label><input name="ville" value="{{ trainer.ville }}" required><br>
+    <label>Street:</label><input name="rue" value="{{ trainer.rue }}" required><br>
+    <label>Postal Code:</label><input name="nip" value="{{ trainer.nip }}" required><br>
+    <label>Country:</label><input name="pays" value="{{ trainer.pays }}" required><br>
+
+    <button type="submit">Update Trainer</button>
+</form>
+{% endblock %}

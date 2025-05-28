@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Edit Apprentice</h2>
+
+<form method="post">
+    <h3>Personal Information</h3>
+    <label>First name:</label><input name="prenom" value="{{ apprenti.prenom }}" required><br>
+    <label>Last name:</label><input name="nom" value="{{ apprenti.nom }}" required><br>
+    <label>Email:</label><input name="mail" value="{{ apprenti.mail }}" required><br>
+    <label>Gender:</label>
+    <select name="sexe" required>
+        <option value="M" {% if apprenti.sexe == 'M' %}selected{% endif %}>Male</option>
+        <option value="F" {% if apprenti.sexe == 'F' %}selected{% endif %}>Female</option>
+    </select><br>
+
+    <h3>Address</h3>
+    <label>City:</label><input name="ville" value="{{ apprenti.ville }}" required><br>
+    <label>Street:</label><input name="rue" value="{{ apprenti.rue }}" required><br>
+    <label>Postal Code:</label><input name="nip" value="{{ apprenti.nip }}" required><br>
+    <label>Country:</label><input name="pays" value="{{ apprenti.pays }}" required><br>
+
+    <h3>School</h3>
+    <label>School Year:</label>
+    <select name="annee_scolaire" required>
+        {% for y in [1, 2, 3, 4] %}
+            <option value="{{ y }}" {% if apprenti.annee_scolaire == y %}selected{% endif %}>{{ y }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label>Trainer:</label>
+    <select name="id_formateur" required>
+        {% for t in trainers %}
+            <option value="{{ t.id_formateur }}" {% if t.id_formateur == apprenti.id_formateur %}selected{% endif %}>
+                {{ t.prenom }} {{ t.nom }}
+            </option>
+        {% endfor %}
+    </select><br>
+
+    <button type="submit">Update Apprentice</button>
+</form>
+{% endblock %}

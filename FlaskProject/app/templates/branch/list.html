@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Branches</h2>
+    <a href="{{ url_for('branch.create_branch') }}" class="button">Add Branch</a>
+
+    <input type="text" id="tableSearch" placeholder="Search..." onkeyup="filterTable()">
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        {% for b in branches %}
+        <tr>
+            <td data-label="Nom">{{ b.nom }}</td>
+            <td data-label="Actions" class="actions">
+                <a href="{{ url_for('branch.edit_branch', id_branche=b.id_branche) }}" class="button">Edit</a>
+                <a href="{{ url_for('branch.delete_branch', id_branche=b.id_branche) }}" class="button danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

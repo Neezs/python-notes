@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Welcome to the Grade Manager</h2>
+<ul>
+    <li><a href="{{ url_for('apprentice.list_apprentices') }}">Manage Apprentices</a></li>
+    <li><a href="{{ url_for('branch.list_branches') }}">Manage Branches</a></li>
+    <li><a href="{{ url_for('trainer.list_trainers') }}">Manage Trainers</a></li>
+    <li><a href="{{ url_for('grade.list_grades') }}">Manage Grades</a></li>
+</ul>
+{% endblock %}

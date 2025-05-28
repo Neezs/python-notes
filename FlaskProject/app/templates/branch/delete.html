@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Delete Branch</h2>
+
+<p class="warning">Are you sure you want to delete the branch <strong>{{ branch.nom }}</strong>?</p>
+
+<form method="post">
+    <button type="submit">Yes, delete</button>
+    <a href="{{ url_for('branch.list_branches') }}">Cancel</a>
+</form>
+{% endblock %}

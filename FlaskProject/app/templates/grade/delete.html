@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Delete Grade</h2>
+
+<p class="warning">Are you sure you want to delete this grade with value <strong>{{ note.valeur }}</strong>?</p>
+
+<form method="post">
+    <button type="submit">Yes, delete</button>
+    <a href="{{ url_for('grade.list_grades') }}">Cancel</a>
+</form>
+{% endblock %}

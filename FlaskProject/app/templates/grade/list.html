@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Grades</h2>
+    <a href="{{ url_for('grade.create_grade') }}" class="button">Add Grade</a>
+
+    <input type="text" id="tableSearch" placeholder="Search..." onkeyup="filterTable()">
+
+    <table>
+        <tr>
+            <th>Value</th>
+            <th>Apprentice</th>
+            <th>Branch</th>
+            <th>Semester</th>
+            <th>Actions</th>
+        </tr>
+        {% for g in grades %}
+        <tr>
+            <td data-label="Note"
+                class="{% if g.valeur > 4.0 %}grade-good{% elif g.valeur == 4.0 %}grade-neutral{% else %}grade-bad{% endif %}">
+                {{ g.valeur }}
+            </td>
+            <td data-label="Prenom">{{ g.apprenti_prenom }}</td>
+            <td data-label="Branche">{{ g.branche_nom }}</td>
+            <td data-label="Semestre">{{ g.semestre }}</td>
+            <td data-label="Actions" class="actions">
+                <a href="{{ url_for('grade.edit_grade', id_note=g.id_note) }}" class="button">Edit</a>
+                <a href="{{ url_for('grade.delete_grade', id_note=g.id_note) }}" class="button danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

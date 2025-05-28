@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+    <header>
+        <h1>Grade Manager</h1>
+        <nav>
+            <a href="{{ url_for('menu.index') }}">Menu</a>
+            <a href="{{ url_for('apprentice.list_apprentices') }}">Apprentices</a>
+            <a href="{{ url_for('branch.list_branches') }}">Branches</a>
+            <a href="{{ url_for('trainer.list_trainers') }}">Trainers</a>
+            <a href="{{ url_for('grade.list_grades') }}">Grades</a>
+        </nav>
+    </header>
+
+    <main>
+    {% block content %}{% endblock %}
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="flash">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+    </main>
+</body>
+</html>

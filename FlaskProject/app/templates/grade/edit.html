@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Edit Grade</h2>
+
+<form method="post">
+    <label>Apprentice:</label>
+    <select name="id_apprenti" required>
+        {% for a in apprentices %}
+            <option value="{{ a.id_apprenti }}"
+                {% if a.id_apprenti == note.id_apprenti %}selected{% endif %}>
+                {{ a.prenom }}
+            </option>
+        {% endfor %}
+    </select><br>
+
+    <label>Branch:</label>
+    <select name="id_branche" required>
+        {% for b in branches %}
+            <option value="{{ b.id_branche }}"
+                {% if b.id_branche == note.id_branche %}selected{% endif %}>
+                {{ b.nom }}
+            </option>
+        {% endfor %}
+    </select><br>
+
+    <label>Semester:</label>
+    <select name="id_semestre" required>
+        {% for s in semestres %}
+            <option value="{{ s.id_semestre }}"
+                {% if s.id_semestre == note.id_semestre %}selected{% endif %}>
+                Semester {{ s.valeur }}
+            </option>
+        {% endfor %}
+    </select><br>
+
+    <label>Grade (value):</label>
+    <select name="valeur" required>
+        {% for g in [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0] %}
+            <option value="{{ g }}"
+                {% if g == note.valeur %}selected{% endif %}>
+                {{ g }}
+            </option>
+        {% endfor %}
+    </select><br>
+
+    <button type="submit">Update Grade</button>
+</form>
+{% endblock %}

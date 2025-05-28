@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Add Apprentice</h2>
+
+<form method="post">
+    <h3>Personal Information</h3>
+    <label>First name:</label><input name="prenom" required><br>
+    <label>Last name:</label><input name="nom" required><br>
+    <label>Email:</label><input name="mail" type="email" required><br>
+    <label>Gender:</label>
+    <select name="sexe" required>
+        <option value="">-- Select Gender --</option>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+    </select><br>
+
+
+    <h3>Address</h3>
+    <label>City:</label><input name="ville" required><br>
+    <label>Street:</label><input name="rue" required><br>
+    <label>Postal code (NIP):</label><input name="nip" type="number" required><br>
+    <label>Country:</label><input name="pays" required><br>
+
+    <h3>School Info</h3>
+    <label>School Year:</label>
+    <select name="annee_scolaire" required>
+        <option value="">-- Select Year --</option>
+        <option value="1">1st Year</option>
+        <option value="2">2nd Year</option>
+        <option value="3">3rd Year</option>
+        <option value="4">4th Year</option>
+    </select>
+<br>
+
+
+    <h3>Trainer</h3>
+    <label>Trainer:</label>
+    <select name="id_formateur" required>
+        <option value="">-- Select Trainer --</option>
+        {% for t in trainers %}
+            <option value="{{ t.id_formateur }}">{{ t.prenom }} {{ t.nom }}</option>
+        {% endfor %}
+    </select>
+    <br>
+
+    <br><br>
+    <button type="submit">Create Apprentice</button>
+</form>
+{% endblock %}
